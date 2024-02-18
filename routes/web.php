@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PuzzleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard', 'dashboard', ['puzzles' => \App\Models\Puzzle::all()])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::group(['prefix' => 'admin', 'name' => 'admin.'], function () {
+    Route::resource('puzzles', PuzzleController::class);
+});
+
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
