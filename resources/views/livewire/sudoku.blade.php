@@ -9,7 +9,7 @@
             <div class="grid grid-cols-9 grid-rows-9" style="width: 750px; height: 750px">
                 @for ($rowIndex = 0; $rowIndex < 9; $rowIndex++)
                     @for ($columnIndex = 0; $columnIndex < 9; $columnIndex++)
-                        <div class="flex items-center justify-center border"
+                        <div class="flex items-center justify-center border border-gray-300"
                              @if($rowIndex % 3 == 0 && $rowIndex != 0) style="border-top: 2px solid black; @if($columnIndex % 3 == 0 && $columnIndex != 0) border-left: 2px solid black"@endif @endif
                              @if($columnIndex % 3 == 0 && $columnIndex != 0) style="border-left: 2px solid black @endif"
                              wire:click="setGridItem({{$rowIndex}}, {{$columnIndex}})">

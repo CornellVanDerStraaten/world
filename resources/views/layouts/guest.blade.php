@@ -15,16 +15,43 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/" wire:navigate>
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"  id="background" style="background-size: contain">
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var images = [
+                    "{{ asset('images/img1.png') }}",
+                    "{{ asset('images/img2.png') }}",
+                    "{{ asset('images/img3.png') }}",
+                    "{{ asset('images/img4.png') }}",
+                    "{{ asset('images/img5.png') }}",
+                    "{{ asset('images/img6.png') }}",
+                    "{{ asset('images/img7.png') }}",
+                    "{{ asset('images/img8.png') }}",
+                    "{{ asset('images/img9.png') }}",
+                    "{{ asset('images/img10.png') }}",
+                    // Add more image URLs as needed
+                ];
+
+                var background = document.getElementById('background');
+
+                function rotateBackground() {
+                    var randomIndex = Math.floor(Math.random() * images.length);
+
+                    background.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+                }
+
+                // Initial rotation
+                rotateBackground();
+
+                // Rotate background every 5 seconds
+                setInterval(rotateBackground, 5000);
+            });
+        </script>
     </body>
 </html>

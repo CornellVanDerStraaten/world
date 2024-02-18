@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="p-6">
+        <h1 class="mb-3 text-3xl font-semibold">Puzzles</h1>
         <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach($puzzles as $puzzle)
                 <li >

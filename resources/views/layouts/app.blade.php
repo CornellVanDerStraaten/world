@@ -31,14 +31,14 @@
     <body class="font-sans antialiased">
     <livewire:toasts />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100" id="background" style="background-size: contain">
             <livewire:layout.navigation />
 
             <!-- Page Content -->
             <main>
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="background-color: rgba(255, 255,255, .95)">
                             {{ $slot }}
                         </div>
                     </div>
@@ -46,6 +46,36 @@
             </main>
         </div>
     @livewireScriptConfig
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = [
+                "{{ asset('images/img1.png') }}",
+                "{{ asset('images/img2.png') }}",
+                "{{ asset('images/img3.png') }}",
+                "{{ asset('images/img4.png') }}",
+                "{{ asset('images/img5.png') }}",
+                "{{ asset('images/img6.png') }}",
+                "{{ asset('images/img7.png') }}",
+                "{{ asset('images/img8.png') }}",
+                "{{ asset('images/img9.png') }}",
+                "{{ asset('images/img10.png') }}",
+                // Add more image URLs as needed
+            ];
 
+            var background = document.getElementById('background');
+
+            function rotateBackground() {
+                var randomIndex = Math.floor(Math.random() * images.length);
+
+                background.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+            }
+
+            // Initial rotation
+            rotateBackground();
+
+            // Rotate background every 5 seconds
+            setInterval(rotateBackground, 5000);
+        });
+    </script>
     </body>
 </html>

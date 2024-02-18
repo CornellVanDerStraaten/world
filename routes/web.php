@@ -20,6 +20,10 @@ Route::view('dashboard', 'dashboard', ['puzzles' => \App\Models\Puzzle::all()])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::view('rewards', 'rewards', ['rewards' => \App\Models\Reward::all()])
+    ->middleware(['auth', 'verified'])
+    ->name('rewards');
+
 Route::group(['prefix' => 'admin', 'name' => 'admin.'], function () {
     Route::resource('puzzles', PuzzleController::class);
 });
